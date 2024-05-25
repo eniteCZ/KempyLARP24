@@ -1,5 +1,7 @@
 # The directory `scripts`
 
+Ficho: Při instalaci je nutné nahradit defaultní scripts složku tímto repo. Alternativně stačí vyměnit soubor `factionInfo.lua`
+
 The Lua files are used in different ways.
 
 ## Hard-coded usage
@@ -47,3 +49,4 @@ The default communication scripts for each created ship or station.
 - `comms_supply_drop.lua` (used by `supply_drop.lua`)
 
 They can be replaced by `obj:setCommsScript(filename)` or `obj:setCommsFunction(callback)`.
+
