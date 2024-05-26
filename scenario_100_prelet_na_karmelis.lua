@@ -12,7 +12,9 @@ function init()
     karmelis = Planet():setPosition(KARMELIS_X, KARMELIS_Y):setPlanetRadius(2500):setDistanceFromMovementPlane(-2000.00)
         karmelis:setPlanetAtmosphereColor(0.2,0.2,0):setPlanetAtmosphereTexture("planets/atmosphere.png")
         karmelis:setPlanetCloudTexture("planets/clouds-2.png"):setPlanetSurfaceTexture("planets/planet-3.png")
-        karmelis:setCallSign("Karmelis")
+        karmelis:setCallSign("Karmelis"):setDescription("A rocky terrestrial world")
+        karmelis:setScanningParameters(2,2)
+        karmelis:setDescriptionForScanState("fullscan", "This is a rocky terrestrial world with an ammonia-rich unbreathable atmosphere. Flora thrives in this poisonous environment. Further scans indicate the presence of a large research station. According to the database, its purpose is the study of ammonia-based flora.")
     local karmelisMoon = Planet():setPosition(-10345, 5292):setPlanetRadius(500):setDistanceFromMovementPlane(-2000.000)
         karmelisMoon:setPlanetSurfaceTexture("planets/moon-2.png"):setAxialRotationTime(220.00)
         karmelisMoon:setCallSign("Nero")
@@ -31,7 +33,7 @@ function init()
         sun1:setCallSign("Pela")
 
     -- Spawn the Ark
-    Archa = PlayerSpaceship():setTemplate("Ender"):setPosition(-17224, -14649):setFaction("USN")
+    Archa = PlayerSpaceship():setTemplate("Ender"):setPosition(-17224, -14649):setFaction("Citadel")
         Archa:setCallSign('Archa Noe-02')
         -- Blbuvzdornost
         Archa:setCanSelfDestruct(false)
@@ -54,9 +56,19 @@ function init()
         -- Motory
         Archa:setJumpDrive(false):setWarpDrive(false):setImpulseMaxSpeed(150)
 
+    CpuShip():setFaction("Vorcha"):setTemplate("Blade"):setCallSign("NC3"):setPosition(-63886, -3756):orderRoaming()
+    CpuShip():setFaction("Vorcha"):setTemplate("Blade"):setCallSign("VS4"):setPosition(-66740, -11828):orderRoaming()
+    CpuShip():setFaction("Vorcha"):setTemplate("Blade"):setCallSign("BR2"):setPosition(-64946, -7833):orderRoaming()
+    
+    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("VK7"):setPosition(-58121, -7130):orderFlyTowards(-36506, -15919)
+    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("NC6"):setPosition(-60049, -10799):orderFlyTowards(-36562, -18675)
+    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("CSS5"):setPosition(-61354, -14653):orderFlyTowards(-39319, -21206)
+    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("S8"):setPosition(-66266, -15959):orderFlyTowards(-40669, -22838)
+    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("VK9"):setPosition(-58619, -2467):orderFlyTowards(-36506, -14681)
+
 end
 
-addGMFunction("Humans Win", function() victory("USN") end)
+addGMFunction("Players Win", function() victory("Citadel") end)
 
 function update(delta)
     -- Check if the player's ship is within 3 units of Karmelis
@@ -64,7 +76,7 @@ function update(delta)
     
     if playerShip:distance(KARMELIS_X,KARMELIS_Y, player_x, player_y) <= 3500 then
         addMessage("Mission Complete! You have reached Karmelis.")
-        victory("USN")
+        victory("Citadel")
     end
 end
 

@@ -101,16 +101,15 @@ The CUF is friendly with the human navy, and neutral toward the TSN and USN. The
 
 The CUF have neutral relations with the Ktlitans and Arlenians. They are enemies with Exuari, Kraylor, and Ghosts for political and historical reasons, not xenophobia; some of their best friends are also Exuari, Kraylor, and Ghosts.]]))
 
--- Citadel = FactionInfo():setName("Citadel")
--- Citadel:setGMColor(255, 255, 255)
--- Citadel:setDescription([[
---     Placeholder
--- ]])
--- Citadel:setEnemy(Vorcha)
+Citadel = FactionInfo():setName("Citadel")
+Citadel:setGMColor(255, 255, 255)
+Citadel:setDescription([[
+    Placeholder
+]])
 
--- Vorcha = FactionInfo():setName("Vorcha")
--- Vorcha:setGMColor(200, 0, 0)
--- Vorcha:setDescription([[
---     Placeholder
--- ]])
--- Vorcha:setEnemy(Citadel)
+Vorcha = FactionInfo():setName("Vorcha")
+Vorcha:setGMColor(200, 0, 0)
+Vorcha:setDescription([[
+    Placeholder
+]])
+Vorcha:setEnemy(Citadel)
