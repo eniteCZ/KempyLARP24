@@ -4,9 +4,12 @@
 --- Scenario
 -- @script scenario_100_basic
 
+require("utils.lua")
+KARMELIS_X = -17289
+KARMELIS_Y = 8764
 
 function init()
-    local karmelis = Planet():setPosition(-17289, 8764):setPlanetRadius(2500):setDistanceFromMovementPlane(-2000.00)
+    karmelis = Planet():setPosition(KARMELIS_X, KARMELIS_Y):setPlanetRadius(2500):setDistanceFromMovementPlane(-2000.00)
         karmelis:setPlanetAtmosphereColor(0.2,0.2,0):setPlanetAtmosphereTexture("planets/atmosphere.png")
         karmelis:setPlanetCloudTexture("planets/clouds-2.png"):setPlanetSurfaceTexture("planets/planet-3.png")
         karmelis:setCallSign("Karmelis")
@@ -14,11 +17,11 @@ function init()
         karmelisMoon:setPlanetSurfaceTexture("planets/moon-2.png"):setAxialRotationTime(220.00)
         karmelisMoon:setCallSign("Nero")
     
-    local nefraxis = Planet():setPosition(265834, 117500):setPlanetRadius(5000):setPlanetCloudRadius(5200.00)
+    local nefraxis = Planet():setPosition(265834, 117500):setPlanetRadius(5000):setPlanetCloudRadius(5200.00):setDistanceFromMovementPlane(-2000)
         nefraxis:setPlanetSurfaceTexture("planets/planet-1.png"):setAxialRotationTime(120.00)
         nefraxis:setPlanetAtmosphereColor(0.361, 0.263, 0.541):setPlanetAtmosphereTexture("planets/atmosphere.png")
         nefraxis:setPlanetCloudTexture("planets/clouds-3.png")
-        nefraxis:setCallSign("Nefraxis")
+        nefraxis:setCallSign("Luschkowitz")
     
     local sun2 = Planet():setPosition(245935, 17518):setPlanetRadius(500):setDistanceFromMovementPlane(-2000)
         sun2:setPlanetSurfaceTexture("planets/planet-2.png"):setAxialRotationTime(20.0)
@@ -28,11 +31,42 @@ function init()
         sun1:setCallSign("Pela")
 
     -- Spawn the Ark
-    Archa = PlayerSpaceship():setTemplate("Ender"):setPosition(-17224, -14649):setFaction("Citadel")
-        Archa:setJumpDrive(false):setWarpDrive(true)
-    -- player:setHullMax(1000):setHull(714):setImpulseMaxSpeed(5.4):setImpulseMaxReverseSpeed(4.8):setRotationMaxSpeed(2.4):setJumpDrive(false):setJumpDriveRange(0.00, 0.00):setShieldsMax(400.00, 400.00):setWeaponTubeCount(4):setWeaponStorageMax("Homing", 20):setWeaponStorage("Homing", 20):setWeaponStorageMax("Nuke", 0):setWeaponStorage("Nuke", 0):setWeaponStorageMax("Mine", 0):setWeaponStorage("Mine", 0):setWeaponStorageMax("EMP", 20):setWeaponStorage("EMP", 20):setWeaponStorageMax("HVLI", 0):setWeaponStorage("HVLI", 0)
+    Archa = PlayerSpaceship():setTemplate("Ender"):setPosition(-17224, -14649):setFaction("USN")
+        Archa:setCallSign('Archa Noe-02')
+        -- Blbuvzdornost
+        Archa:setCanSelfDestruct(false)
+        Archa:setCanBeDestroyed(false)
+        -- Rakety
+        Archa:setWeaponTubeCount(4):setWeaponTubeDirection(1, 0):setWeaponTubeDirection(2, 180):setWeaponTubeDirection(3, 180)
+        Archa:setWeaponStorageMax("Homing", 10):setWeaponStorage("Homing", 10):setWeaponStorageMax("Mine", 0)
+        Archa:setWeaponStorage("Mine", 0):setWeaponStorageMax("EMP", 8):setWeaponStorage("EMP", 8):setMaxScanProbeCount(20):setScanProbeCount(12)
+        -- Poškození
+        Archa:setHullMax(1000):setHull(714)
+        Archa:setSystemHealthMax("reactor", 0.6):setSystemHealth("reactor", 0.4)
+        Archa:setSystemHealthMax("maneuver", 0.65):setSystemHealth("maneuver", 0.3)
+        Archa:setSystemHealthMax("impulse", 0.2):setSystemHealth("impulse", 0.1)
+        Archa:setSystemHealthMax("warp", 0.0):setSystemHealth("warp", 0.0)
+        Archa:setSystemHealthMax("jumpdrive", 0.0):setSystemHealth("jumpdrive", 0.0)
+        Archa:setSystemHealthMax("beamweapons", 0.8):setSystemHealth("beamweapons", 0.4)
+        Archa:setSystemHealthMax("missilesystem", 0.75):setSystemHealth("missilesystem", 0.5)
+        Archa:setSystemHealthMax("frontshield", 0.8):setSystemHealth("frontshield", 0.4)
+        Archa:setSystemHealthMax("rearshield", 0.75):setSystemHealth("rearshield", 0.5)
+        -- Motory
+        Archa:setJumpDrive(false):setWarpDrive(false):setImpulseMaxSpeed(150)
+
 end
 
+addGMFunction("Humans Win", function() victory("USN") end)
+
+function update(delta)
+    -- Check if the player's ship is within 3 units of Karmelis
+    player_x, player_y = Archa:getPosition()
+    
+    if playerShip:distance(KARMELIS_X,KARMELIS_Y, player_x, player_y) <= 3500 then
+        addMessage("Mission Complete! You have reached Karmelis.")
+        victory("USN")
+    end
+end
 
 onNewPlayerShip(
     function(ship)
@@ -41,11 +75,6 @@ onNewPlayerShip(
         -- ship:destroy()
     end
 )
-    
-
-
--- PlayerSpaceship():setTemplate("Ender"):setPosition(-16928, -14726):setHullMax(1000):setHull(704):setJumpDrive(false):setWarpDrive(true)
-
 
 
 
@@ -65,3 +94,5 @@ Nebula():setPosition(-80642, -4550)
 Nebula():setPosition(-74516, -10540)
 Nebula():setPosition(-70977, -5776)
 Nebula():setPosition(-94663, 27439)
+
+
