@@ -59,12 +59,17 @@ function init()
     CpuShip():setFaction("Vorcha"):setTemplate("Blade"):setCallSign("NC3"):setPosition(-63886, -3756):orderRoaming()
     CpuShip():setFaction("Vorcha"):setTemplate("Blade"):setCallSign("VS4"):setPosition(-66740, -11828):orderRoaming()
     CpuShip():setFaction("Vorcha"):setTemplate("Blade"):setCallSign("BR2"):setPosition(-64946, -7833):orderRoaming()
-    
-    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("VK7"):setPosition(-58121, -7130):orderFlyTowards(-36506, -15919)
-    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("NC6"):setPosition(-60049, -10799):orderFlyTowards(-36562, -18675)
-    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("CSS5"):setPosition(-61354, -14653):orderFlyTowards(-39319, -21206)
-    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("S8"):setPosition(-66266, -15959):orderFlyTowards(-40669, -22838)
-    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("VK9"):setPosition(-58619, -2467):orderFlyTowards(-36506, -14681)
+   
+    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("VK7"):setPosition(-58121, -7130):orderAttack(Archa):setBeamWeapon(0, 48, 0, 500, 20.0, 0.2):setBeamWeaponTurret(0, 0, 0, 0):setImpulseMaxSpeed(129.2):setRotationMaxSpeed(11.4)
+    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("NC6"):setPosition(-60049, -10799):orderAttack(Archa):setBeamWeapon(0, 48, 0, 500, 20.0, 0.2):setBeamWeaponTurret(0, 0, 0, 0):setImpulseMaxSpeed(129.2):setRotationMaxSpeed(11.4)
+    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("CSS5"):setPosition(-61354, -14653):orderAttack(Archa):setBeamWeapon(0, 48, 0, 500, 20.0, 0.2):setBeamWeaponTurret(0, 0, 0, 0):setImpulseMaxSpeed(129.2):setRotationMaxSpeed(11.4)
+    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("S8"):setPosition(-66266, -15959):orderAttack(Archa):setBeamWeapon(0, 48, 0, 500, 20.0, 0.2):setBeamWeaponTurret(0, 0, 0, 0):setImpulseMaxSpeed(129.2):setRotationMaxSpeed(11.4)
+    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("VK9"):setPosition(-58619, -2467):orderAttack(Archa):setBeamWeapon(0, 48, 0, 500, 20.0, 0.2):setBeamWeaponTurret(0, 0, 0, 0):setImpulseMaxSpeed(129.2):setRotationMaxSpeed(11.4)
+    CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("VK9"):setPosition(-58619, -2467):orderAttack(Archa):setBeamWeapon(0, 48, 0, 500, 20.0, 0.2):setBeamWeaponTurret(0, 0, 0, 0):setImpulseMaxSpeed(129.2):setRotationMaxSpeed(11.4)
+
+  
+
+
 
 end
 
