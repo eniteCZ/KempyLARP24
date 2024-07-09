@@ -40,8 +40,9 @@ function init()
         Archa:setCanBeDestroyed(false)
         -- Rakety
         Archa:setWeaponTubeCount(4):setWeaponTubeDirection(1, 0):setWeaponTubeDirection(2, 180):setWeaponTubeDirection(3, 180)
-        Archa:setWeaponStorageMax("Homing", 10):setWeaponStorage("Homing", 10):setWeaponStorageMax("Mine", 0)
-        Archa:setWeaponStorage("Mine", 0):setWeaponStorageMax("EMP", 8):setWeaponStorage("EMP", 8):setMaxScanProbeCount(20):setScanProbeCount(12)
+        Archa:setWeaponStorageMax("Homing", 30):setWeaponStorage("Homing", 20):setWeaponStorageMax("Mine", 0)
+        Archa:weaponTubeAllowMissle(1, "Homing"):weaponTubeAllowMissle(1, "EMP"):weaponTubeAllowMissle(0, "EMP")
+        Archa:setWeaponStorage("Mine", 0):setWeaponStorageMax("EMP", 20):setWeaponStorage("EMP", 10):setMaxScanProbeCount(20):setScanProbeCount(12)
         -- Poškození
         Archa:setHullMax(1000):setHull(714)
         Archa:setSystemHealthMax("reactor", 0.6):setSystemHealth("reactor", 0.4)
@@ -68,7 +69,8 @@ function init()
     CpuShip():setFaction("Vorcha"):setTemplate("Personnel Freighter 1"):setCallSign("VK9"):setPosition(-58619, -2467):orderAttack(Archa):setBeamWeapon(0, 48, 0, 500, 20.0, 0.2):setBeamWeaponTurret(0, 0, 0, 0):setImpulseMaxSpeed(129.2):setRotationMaxSpeed(11.4)
 
   
-
+    -- Send message to the communications officer
+    Archa:addCustomMessage("Relay", "VITA: Databáze ")
 
 
 end
