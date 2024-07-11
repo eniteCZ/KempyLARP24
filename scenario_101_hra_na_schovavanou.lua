@@ -36,7 +36,7 @@ function init()
         sun1:setCallSign("Pela")
 
     -- Spawn the Ark
-    Archa = PlayerSpaceship():setTemplate("Ender"):setPosition(275834, 118500):setFaction("Citadel")
+    Archa = PlayerSpaceship():setTemplate("Ender"):setPosition(283916, 120545):setFaction("Citadel")
         Archa:setCallSign('Archa Noe-02')
         -- Blbuvzdornost
         Archa:setCanSelfDestruct(false)
